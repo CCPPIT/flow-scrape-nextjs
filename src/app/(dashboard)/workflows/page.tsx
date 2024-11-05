@@ -1,21 +1,24 @@
-import { getWorkFlowForUser } from '@/actions/getWorkFlowForUser'
+import { getWorkFlowForUser } from '@/actions/workflows/getWorkFlowForUser'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Skeleton } from '@/components/ui/skeleton'
 import { WaitFor } from '@/helpers/WaitFor'
 import { AlertCircle, InboxIcon } from 'lucide-react'
 import React, { Suspense } from 'react'
+import CreateWorkFlowDialog from './components/CreateWorkFlowDialog'
+import WorkFlowCard from './components/workflow-card'
 
 type Props = {}
 
 const WorkFlowPage = (props: Props) => {
   return (
     <div className='flex flex-1 flex-col h-full'>
-      <div className='flex justify-between'>
+      <div className='flex justify-between px-2'>
         <div className='flex flex-col'>
         <h1 className='text-3xl font-bold'>WorkFlows</h1>
         <p className='text-muted-foreground'>Manage your Workflows</p>
 
         </div>
+        <CreateWorkFlowDialog/>
      
 
       </div>
@@ -63,12 +66,17 @@ async function UserWorkFlow(){
 
 
         </div>
+        <CreateWorkFlowDialog TriggerText='Create your first workflow'/>
 
       </div>
     )
   }
   return(
-    <div></div>
+    <div className='grid grid-cols-1 gap-4 p-2'>
+      {workflows.map((workflow)=>(
+        <WorkFlowCard key={workflow.id} workflow={workflow}/>
+      ))}
+    </div>
   )
 }
 

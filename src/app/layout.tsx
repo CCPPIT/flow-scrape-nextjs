@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/provider";
 import {ClerkProvider}from '@clerk/nextjs'
+import QueryProvider from "@/components/query-provider/query-provider";
+import { Toaster } from "sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,6 +43,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <QueryProvider>
+
+       
         <ThemeProvider
            attribute="class"
            defaultTheme="system"
@@ -50,8 +55,10 @@ export default function RootLayout({
         {children}
 
         </ThemeProvider>
+        </QueryProvider>
        
       </body>
+      <Toaster richColors/>
     </html>
     </ClerkProvider>
   );

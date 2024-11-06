@@ -40,7 +40,7 @@ const WorkFlowCard = ({workflow}: Props) => {
             </div>
             <div>
                 <h3 className='text-base font-bold text-muted-foreground flex items-center'>
-                    <Link href={`/workflows/editor/${workflow.id}`} className='flex items-center hover:underline'>
+                    <Link href={`/workflow/editor/${workflow.id}`} className='flex items-center hover:underline'>
                     {workflow.name}
                     </Link>
                     {isDraft&&(
@@ -50,7 +50,7 @@ const WorkFlowCard = ({workflow}: Props) => {
             </div>
             </div>
             <div className='flex items-center space-x-2'>
-                <Link href={`/workflows/editor/${workflow.id}`}
+                <Link href={`/workflow/editor/${workflow.id}`}
                 className={cn(
                     buttonVariants({
                         variant:"outline",
@@ -62,7 +62,7 @@ const WorkFlowCard = ({workflow}: Props) => {
                     <ShuffleIcon className='size-4'/>
                     Edit
                 </Link>
-                <WorkFlowActions workflowName={workflow.name}>
+                <WorkFlowActions workflowName={workflow.name} workflowId={workflow.id}>
                     <TooltipWrapper content={"More Actions"}>
                         <MoreVerticalIcon className='size-5'/>
                     </TooltipWrapper>

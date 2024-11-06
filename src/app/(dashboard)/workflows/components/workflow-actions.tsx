@@ -9,9 +9,10 @@ import DeleteWorkFlowDialog from './DeleteWorkFlowDialog'
 type Props = { 
     children:React.ReactNode,
     workflowName:string
+    workflowId:string
 }
 
-const WorkFlowActions = ({children,workflowName}: Props) => {
+const WorkFlowActions = ({children,workflowName,workflowId}: Props) => {
     const [showDeleteDialog,setShowDeleteDialog]=useState(false)
   return (
     <div className='flex justify-end'>
@@ -19,6 +20,7 @@ const WorkFlowActions = ({children,workflowName}: Props) => {
         open={showDeleteDialog}
         setOpen={setShowDeleteDialog}
         workflowName={workflowName}
+        workflowId={workflowId}
 
         />
         <DropdownMenu >
